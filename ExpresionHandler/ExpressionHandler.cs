@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalcLib;
 
 namespace ExpresionHandlerLib
 {
     public class ExpressionHandler
     {
-        public int expressions { get; set; }
-        public double a { get; set; }
-        public double b { get; set; }
-        public char action { get; set; }
-        public string expression = "";
-
-        public ExpressionHandler(string exp)
+        static private string GetExpression(string exp)
         {
-            expression = exp;
-            if (ExpressionVerification())
+            string[] b = exp.Split('(');
+
+            return b[b.Length - 1].Split(')')[0];
+        }
+
+        static private void config(string exp)
+        {
+            if (ExpressionVerification(exp))
             {
-                expressions = 0;
-                SetExpressionCount();
             }
             else
             {
@@ -28,61 +27,164 @@ namespace ExpresionHandlerLib
             }
         }
 
-        private int FirstLocation()
+        static public string GetResault(string expression)
         {
-            return expression.Split('(').Length;
+            config(expression);
+            int bracketCount = expression.Split('(').Length;
+
+            for (int l = 0; l < bracketCount+1; l++)
+            {
+                string exp = GetExpression(expression);
+                int k = GetExpressionCount(exp);
+                bracketCount = expression.Split('(').Length;
+
+                string aStr = "";
+                string bStr = "";
+                int i = 0;
+
+                for (int z = 0; z < k; z++)
+                {
+                    aStr = "";
+                    bStr = "";
+                    char action = GetFirstAction(exp);
+                    if(action == '0')
+                        return expression;
+                    for (i = 0; i < exp.Length; i++)
+                    {
+                        if (exp[i] != action)
+                        {
+                            aStr += exp[i];
+
+                            if (exp[i] == '*' || exp[i] == '-' || exp[i] == '+' || exp[i] == '/')
+                            {
+                                aStr = "";
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    for (int j = i + 1; j < exp.Length; j++)
+                    {
+                        if (exp[j] != '*' && exp[j] != '-' && exp[j] != '+' && exp[j] != '/')
+                        {
+                            bStr += exp[j];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    double a = 0;
+                    double b = 0;
+                    try
+                    {
+                        a = Convert.ToDouble(aStr);
+                        b = Convert.ToDouble(bStr);
+                    }
+                    catch
+                    {
+                        return expression;
+                    }
+                    double ab = 0;
+
+                    switch (action)
+                    {
+                        case '*':
+                            {
+                                ab = Calc.Multiplication(a, b);
+                                break;
+                            }
+                        case '/':
+                            {
+                                ab = Calc.Division(a, b);
+                                break;
+                            }
+                        case '+':
+                            {
+                                ab = Calc.Sum(a, b);
+                                break;
+                            }
+                        case '-':
+                            {
+                                ab = Calc.Subtraction(a, b);
+                                break;
+                            }
+                    }
+
+                    string bufExp = expression;
+                    expression = expression.Replace('(' + aStr + action + bStr + ')', ab.ToString());
+                    if (bufExp == expression)
+                    {
+                        expression = expression.Replace(aStr + action + bStr, ab.ToString());
+                        exp = exp.Replace(aStr + action + bStr, ab.ToString());
+                    }
+                    expression = Replace(expression);
+
+                }
+
+            }
+            return expression;
         }
 
-        public void GetExpression()
+        static private string Replace(string exp)
         {
-            int s = FirstLocation();
-            int k = 0;
-            string[] b = expression.Split('(');
-            List<string[]> buffer = new List<string[]>();
+            if(exp.Contains("+-"))
+                return exp.Replace("+-", "-");
+            else if(exp.Contains("--"))
+                return exp.Replace("--", "+");
+            return exp;
+        }
 
-            foreach(string item in b)
+        static private char GetFirstAction(string exp)
+        {
+            char action = '0';
+            for (int i = 0; i < exp.Length; i++)
             {
-                buffer.Add(item.Split(')'));
-            }
-
-            foreach(string[] buf in buffer)
-            {
-                foreach(string item in buf)
+                if (exp[i] == '*' || exp[i] == '-' || exp[i] == '+' || exp[i] == '/')
                 {
-                    if(k == s)
-                    {
-                        Console.Write("First:");
-                    }
-                    Console.WriteLine(item);
-                    k++;
+                    action = exp[i];
+                    break;
                 }
             }
+            for (int i = 0; i < exp.Length; i++)
+            {
+                if (exp[i] == '*' || exp[i] == '/')
+                {
+                    action = exp[i];
+                    break;
+                }
+            }
+            return action;
         }
 
 
-
-        private void SetExpressionCount()
+        static private int GetExpressionCount(string exp)
         {
-            foreach (char item in expression)
+            int e = 0;
+            foreach (char item in exp)
             {
                 if(item == '*' || item == '-' || item == '+' || item == '/')
                 {
-                    expressions++;
+                    e++;
                 }
             }
+            return e;
         }
 
-        private bool ExpressionVerification()
+        static private bool ExpressionVerification(string exp)
         {
-            for (int i = 0; i < expression.Length;i++)
+            for (int i = 0; i < exp.Length;i++)
             {
-                if (expression[i] == '*' || expression[i] == '-' || expression[i] == '+' || expression[i] == '/' || 
-                    expression[i] == ',' || expression[i] == '(')
+                if (exp[i] == '*' || exp[i] == '-' || exp[i] == '+' || exp[i] == '/' || 
+                    exp[i] == ',' || exp[i] == '(')
                 {
                     try
                     {
-                        if (expression[i + 1] == '*' || expression[i + 1] == '-' || expression[i + 1] == '+' || expression[i + 1] == '/' ||
-                            expression[i + 1] == ',' || expression[i] == ')')
+                        if (exp[i + 1] == '*' || exp[i + 1] == '-' || exp[i + 1] == '+' || exp[i + 1] == '/' ||
+                            exp[i + 1] == ',' || exp[i] == ')')
                         {
                             return false;
                         }
@@ -92,15 +194,15 @@ namespace ExpresionHandlerLib
                         return false;                
                     }
                 }
-                else if (expression[i] == ')')
+                else if (exp[i] == ')')
                 {
                     try
                     {
 
 
-                        if (expression[i + 1] != '*' && expression[i + 1] != '-' && expression[i + 1] != '+' && expression[i + 1] != '/')
+                        if (exp[i + 1] != '*' && exp[i + 1] != '-' && exp[i + 1] != '+' && exp[i + 1] != '/')
                         {
-                            if(expression[i + 1] == ',' || expression[i + 1] == '(')
+                            if(exp[i + 1] == ',' || exp[i + 1] == '(')
                             {
                                 return false;
                             }

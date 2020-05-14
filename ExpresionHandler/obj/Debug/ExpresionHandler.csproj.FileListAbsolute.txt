@@ -3,3 +3,6 @@ C:\Calculator\ExpresionHandler\bin\Debug\ExpresionHandler.pdb
 C:\Calculator\ExpresionHandler\obj\Debug\ExpresionHandler.csprojAssemblyReference.cache
 C:\Calculator\ExpresionHandler\obj\Debug\ExpresionHandler.dll
 C:\Calculator\ExpresionHandler\obj\Debug\ExpresionHandler.pdb
+C:\Calculator\ExpresionHandler\bin\Debug\CalcLib.dll
+C:\Calculator\ExpresionHandler\bin\Debug\CalcLib.pdb
+C:\Calculator\ExpresionHandler\obj\Debug\ExpresionHandler.csproj.CopyComplete

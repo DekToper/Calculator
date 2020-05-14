@@ -6,49 +6,49 @@ using System.Threading.Tasks;
 
 namespace CalcLib
 {
-    public abstract class Calc 
+    abstract public class Calc 
     {
-        public double Multiplication(double a, double b)
+        static public double Multiplication(double a, double b)
         {
             return a * b;
         }
 
-        public double Division(double a, double b)
+        static public double Division(double a, double b)
         {
             return a / b;
         }
 
-        public double Sum(double a, double b)
+        static public double Sum(double a, double b)
         {
             return a + b;
         }
 
-        public double Subtraction(double a, double b) 
+        static public double Subtraction(double a, double b) 
         {
             return a - b;
         }
 
-        public double SqrtX(double a, double b)
+        static public double SqrtX(double a, double b)
         {
             return Math.Pow(a, 1 / b);
         }
 
-        public double DegreeY(double a, double b)
+        static public double DegreeY(double a, double b)
         {
             return Math.Pow(a, b);
         }
 
-        public double Sqrt(double a)
+        static public double Sqrt(double a)
         {
             return Math.Sqrt(a);
         }
 
-        public double Square(double a)
+        static public double Square(double a)
         {
             return Math.Pow(a, 2.0);
         }
 
-        public double Factorial(double a)
+        static public double Factorial(double a)
         {
             double f = 1;
 

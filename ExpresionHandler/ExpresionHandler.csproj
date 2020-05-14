@@ -44,5 +44,11 @@
     <Compile Include="ExpressionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalcLib\CalcLib.csproj">
+      <Project>{badff461-e5c7-42f8-9c4a-e08e617ff29b}</Project>
+      <Name>CalcLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

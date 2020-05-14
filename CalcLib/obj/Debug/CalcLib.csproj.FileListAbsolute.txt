@@ -4,3 +4,8 @@ C:\Users\Chtirlez\source\repos\CalcLib\CalcLib\obj\Debug\CalcLib.csprojAssemblyR
 C:\Users\Chtirlez\source\repos\CalcLib\CalcLib\obj\Debug\CalcLib.csproj.CoreCompileInputs.cache
 C:\Users\Chtirlez\source\repos\CalcLib\CalcLib\obj\Debug\CalcLib.dll
 C:\Users\Chtirlez\source\repos\CalcLib\CalcLib\obj\Debug\CalcLib.pdb
+C:\Calculator\CalcLib\bin\Debug\CalcLib.dll
+C:\Calculator\CalcLib\bin\Debug\CalcLib.pdb
+C:\Calculator\CalcLib\obj\Debug\CalcLib.csprojAssemblyReference.cache
+C:\Calculator\CalcLib\obj\Debug\CalcLib.dll
+C:\Calculator\CalcLib\obj\Debug\CalcLib.pdb
