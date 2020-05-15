@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{1BE22ECF-31B2-4668-9274-AF08B0DBE676}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpresionHandler", "..\ExpresionHandler\ExpresionHandler.csproj", "{C1777991-481D-4CB1-A0ED-2E09C01D2724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLib", "..\CalcLib\CalcLib.csproj", "{BADFF461-E5C7-42F8-9C4A-E08E617FF29B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1BE22ECF-31B2-4668-9274-AF08B0DBE676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BE22ECF-31B2-4668-9274-AF08B0DBE676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BE22ECF-31B2-4668-9274-AF08B0DBE676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1777991-481D-4CB1-A0ED-2E09C01D2724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1777991-481D-4CB1-A0ED-2E09C01D2724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1777991-481D-4CB1-A0ED-2E09C01D2724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1777991-481D-4CB1-A0ED-2E09C01D2724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADFF461-E5C7-42F8-9C4A-E08E617FF29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADFF461-E5C7-42F8-9C4A-E08E617FF29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADFF461-E5C7-42F8-9C4A-E08E617FF29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADFF461-E5C7-42F8-9C4A-E08E617FF29B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

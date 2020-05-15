@@ -13,18 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExpresionHandlerLib;
 
 namespace Calculator
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-      InitializeComponent();
-    }
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
         private void DataChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -42,7 +43,7 @@ namespace Calculator
             {
                 resultTxtBox.Text = resultTxtBox.Text + "0";
             }
-            
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -183,7 +184,8 @@ namespace Calculator
 
         private void Button_Click_15(object sender, RoutedEventArgs e)
         {
-            resultTxtBox.Text = resultTxtBox.Text + "=";
+            prevResultTxtBox.Text = resultTxtBox.Text + "=" + ExpressionHandler.GetResault(resultTxtBox.Text);
+            resultTxtBox.Text = "0";
         }
 
         private void Button_Click_16(object sender, RoutedEventArgs e)
@@ -204,11 +206,11 @@ namespace Calculator
         private void ButtonPowerOff_Click(object sender, RoutedEventArgs e)
         {
 
-                Task.Run(new Action(() =>
-                {
-                    Thread.Sleep(1700);
-                    this.Dispatcher.Invoke(new Action(() => { this.Close(); }));
-                }));
+            Task.Run(new Action(() =>
+            {
+                Thread.Sleep(1900);
+                this.Dispatcher.Invoke(new Action(() => { this.Close(); }));
+            }));
 
         }
 
